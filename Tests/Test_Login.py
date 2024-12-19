@@ -3,6 +3,7 @@ from utils.BaseClass import BaseClass
 
 
 class Test_Login(BaseClass):
+
     def test_valid_login_001(self, config):
         # To verify whether the user is able to login to the Application with valid credentials
         # and also verify whether the user is taken to 'Products' page post successful login.
@@ -131,3 +132,4 @@ class Test_Login(BaseClass):
         productpagetitle = products.get_title().text
         assert "Products" == productpagetitle
         log.info("Logged in successfully")
+        log.info("Test Execution completed")
