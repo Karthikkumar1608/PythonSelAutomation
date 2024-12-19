@@ -116,3 +116,18 @@ class Test_Login(BaseClass):
         assert "Products" == productpagetitle
         log.info("Logged in successfully")
 
+    def test_valid_login_008(self, config):
+        # To verify whether the user is able to login to the Application with valid credentials
+        # and also verify whether the user is taken to 'Products' page post successful login.
+        loginpage = LoginPage(self.driver)
+        log = self.getlogger()
+        log.info("Testcase_001_validate the Login with valid credentials")
+        loginpage.get_name().send_keys(config['username'])
+        log.info("Username entered successfully")
+        loginpage.get_password().send_keys(config['password'])
+        log.info("Password entered successfully")
+        products = loginpage.get_login_button()
+
+        productpagetitle = products.get_title().text
+        assert "Products" == productpagetitle
+        log.info("Logged in successfully")
