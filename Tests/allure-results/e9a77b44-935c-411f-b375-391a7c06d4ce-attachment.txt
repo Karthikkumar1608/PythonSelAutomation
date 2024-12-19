@@ -1,0 +1,1 @@
+[32mINFO    [0m test_valid_login_002:Test_Login.py:28 Testcase_001_validate the Login with valid credentials
