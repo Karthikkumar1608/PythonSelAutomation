@@ -23,7 +23,7 @@ def config(request):
         'browser_name':request.config.getoption("browser_name")
     }
 
-@pytest.fixture(scope="class")
+@pytest.fixture()
 def setup(request, config):
     global driver
     if config['browser_name'] == 'chrome':
@@ -38,6 +38,7 @@ def setup(request, config):
 
     driver.implicitly_wait(10)
     driver.maximize_window()
+    print(config['url'])
 
     driver.get(config['url'])
     request.cls.driver = driver
