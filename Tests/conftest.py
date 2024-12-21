@@ -6,6 +6,7 @@ from selenium.webdriver.edge.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
+import os
 driver = None
 
 def pytest_addoption(parser):
@@ -38,8 +39,17 @@ def setup(request, config):
 
     driver.implicitly_wait(10)
     driver.maximize_window()
+    url = os.getenv("URL")
+    print(url)
+    driver.get(url)
 
-    driver.get(config['url'])
+
+
+    username = os.getenv("USERNAME")
+    password = os.getenv("PASSWORD")
+
+    # Use these variables in your Selenium script
+
     request.cls.driver = driver
     request.cls.config = config
 
