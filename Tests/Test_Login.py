@@ -1,6 +1,7 @@
 import time
 
 from PageObjects.LoginPage import LoginPage
+from Tests.conftest import username, password
 from utils.BaseClass import BaseClass
 
 
@@ -12,9 +13,11 @@ class Test_Login(BaseClass):
         loginpage = LoginPage(self.driver)
         log = self.getlogger()
         log.info("Testcase_001_validate the Login with valid credentials")
-        loginpage.get_name().send_keys(config['username'])
+        loginpage.get_name().send_keys(username)
+         # (config['username']))
         log.info("Username entered successfully")
-        loginpage.get_password().send_keys(config['password'])
+        loginpage.get_password().send_keys(password)
+            # config['password'])
         log.info("Password entered successfully")
         products = loginpage.get_login_button()
         time.sleep(5)

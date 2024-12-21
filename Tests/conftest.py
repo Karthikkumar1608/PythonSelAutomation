@@ -7,20 +7,32 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 import os
+from dotenv import load_dotenv
+from pathlib import Path
 driver = None
 
+# Locate the .env file
+dotenv_path = Path('.env')
+# Load environment variables from .env file
+load_dotenv(dotenv_path=dotenv_path)
+
+# Fetch the variables from environment or fall back to .env file values
+url = os.getenv("URL")
+username = os.getenv("USER_NAME")
+password = os.getenv("PASSWORD")
+
 def pytest_addoption(parser):
-    parser.addini('url', 'url of the application')
-    parser.addini('username', 'login username')
-    parser.addini('password', 'login password')
+    # parser.addini('url', 'url of the application')
+    # parser.addini('username', 'login username')
+    # parser.addini('password', 'login password')
     parser.addoption('--browser_name', action="store",default = "chrome")
 
 @pytest.fixture(scope="session")
 def config(request):
     return {
-        'url':request.config.getini('url'),
-        'username':request.config.getini('username'),
-        'password':request.config.getini('password'),
+        # 'url':request.config.getini('url'),
+        # 'username':request.config.getini('username'),
+        # 'password':request.config.getini('password'),
         'browser_name':request.config.getoption("browser_name")
     }
 
@@ -39,14 +51,11 @@ def setup(request, config):
 
     driver.implicitly_wait(10)
     driver.maximize_window()
-    url = os.getenv("URL")
-    print(url)
     driver.get(url)
 
 
-
-    username = os.getenv("USERNAME")
-    password = os.getenv("PASSWORD")
+    # Use these variables in your Selenium script
+    print(f"URL: {url}, Username: {username}, Password: {password}")  # Example usage
 
     # Use these variables in your Selenium script
 
