@@ -1,0 +1,4 @@
+[32mINFO    [0m test_valid_login_001:Test_Login.py:15 Testcase_001_validate the Login with valid credentials
+[32mINFO    [0m test_valid_login_001:Test_Login.py:18 Username entered successfully
+[32mINFO    [0m test_valid_login_001:Test_Login.py:21 Password entered successfully
+[32mINFO    [0m test_valid_login_001:Test_Login.py:26 Logged in successfully
