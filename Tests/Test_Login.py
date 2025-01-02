@@ -7,7 +7,7 @@ from utils.BaseClass import BaseClass
 
 class Test_Login(BaseClass):
 
-    def test_valid_login_001(self, config):
+    def test_valid_login_001(self):
         # To verify whether the user is able to login to the Application with valid credentials
         # and also verify whether the user is taken to 'Products' page post successful login.
         loginpage = LoginPage(self.driver)

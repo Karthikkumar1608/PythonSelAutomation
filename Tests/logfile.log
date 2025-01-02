@@ -109,3 +109,19 @@ test_valid_login_001 : 2024-12-21 12:39:36,362 : INFO : Testcase_001_validate th
 test_valid_login_001 : 2024-12-21 12:39:36,647 : INFO : Username entered successfully
 test_valid_login_001 : 2024-12-21 12:39:36,846 : INFO : Password entered successfully
 test_valid_login_001 : 2024-12-21 12:39:42,142 : INFO : Logged in successfully
+test_valid_login_001 : 2024-12-21 23:37:59,207 : INFO : Testcase_001_validate the Login with valid credentials
+test_valid_login_001 : 2024-12-21 23:37:59,466 : INFO : Username entered successfully
+test_valid_login_001 : 2024-12-21 23:37:59,678 : INFO : Password entered successfully
+test_valid_login_001 : 2024-12-21 23:38:04,937 : INFO : Logged in successfully
+test_valid_login_001 : 2024-12-23 14:58:32,099 : INFO : Testcase_001_validate the Login with valid credentials
+test_valid_login_001 : 2024-12-23 14:58:32,314 : INFO : Username entered successfully
+test_valid_login_001 : 2024-12-23 14:58:32,497 : INFO : Password entered successfully
+test_valid_login_001 : 2024-12-23 14:58:37,755 : INFO : Logged in successfully
+test_valid_login_001 : 2024-12-23 15:01:19,686 : INFO : Testcase_001_validate the Login with valid credentials
+test_valid_login_001 : 2024-12-23 15:01:19,949 : INFO : Username entered successfully
+test_valid_login_001 : 2024-12-23 15:01:20,161 : INFO : Password entered successfully
+test_valid_login_001 : 2024-12-23 15:01:25,458 : INFO : Logged in successfully
+test_valid_login_001 : 2024-12-23 15:06:58,597 : INFO : Testcase_001_validate the Login with valid credentials
+test_valid_login_001 : 2024-12-23 15:06:58,840 : INFO : Username entered successfully
+test_valid_login_001 : 2024-12-23 15:06:59,045 : INFO : Password entered successfully
+test_valid_login_001 : 2024-12-23 15:07:04,320 : INFO : Logged in successfully

@@ -11,15 +11,16 @@ from dotenv import load_dotenv
 from pathlib import Path
 driver = None
 
-# Locate the .env file
-dotenv_path = Path('.env')
-# Load environment variables from .env file
-load_dotenv(dotenv_path=dotenv_path)
-
-# Fetch the variables from environment or fall back to .env file values
-url = os.getenv("URL")
-username = os.getenv("USER_NAME")
-password = os.getenv("PASSWORD")
+try:
+    # Locate the .env file
+    dotenv_path = Path('.env')
+    # Load environment variables from .env file
+    load_dotenv(dotenv_path=dotenv_path)
+finally:
+    # Fetch the variables from environment or fall back to .env file values
+    url = os.getenv("URL")
+    username = os.getenv("USER_NAME")
+    password = os.getenv("PASSWORD")
 
 def pytest_addoption(parser):
     # parser.addini('url', 'url of the application')
@@ -27,25 +28,26 @@ def pytest_addoption(parser):
     # parser.addini('password', 'login password')
     parser.addoption('--browser_name', action="store",default = "chrome")
 
-@pytest.fixture(scope="session")
-def config(request):
-    return {
-        # 'url':request.config.getini('url'),
-        # 'username':request.config.getini('username'),
-        # 'password':request.config.getini('password'),
-        'browser_name':request.config.getoption("browser_name")
-    }
+# @pytest.fixture(scope="session")
+# def config(request):
+#     return {
+#         # 'url':request.config.getini('url'),
+#         # 'username':request.config.getini('username'),
+#         # 'password':request.config.getini('password'),
+#         'browser_name':request.config.getoption("browser_name")
+#     }
 
 @pytest.fixture(scope="class")
-def setup(request, config):
+def setup(request):
     global driver
-    if config['browser_name'] == 'chrome':
+    browsername = request.config.getoption("browser_name")
+    if browsername == 'chrome':
         service_obj = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service_obj)
-    elif config['browser_name'] == 'firefox':
+    elif browsername == 'firefox':
         service_obj = Service(GeckoDriverManager().install())
         driver = webdriver.Firefox(service=service_obj)
-    elif config['browser_name'] == 'edge':
+    elif browsername == 'edge':
         service_obj = Service(EdgeChromiumDriverManager().install())
         driver = webdriver.Edge(service=service_obj)
 
@@ -60,7 +62,7 @@ def setup(request, config):
     # Use these variables in your Selenium script
 
     request.cls.driver = driver
-    request.cls.config = config
+    # request.cls.config = config
 
     yield driver
     driver.quit()
